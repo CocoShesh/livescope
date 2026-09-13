@@ -1,0 +1,19 @@
+{
+  "name": "livescope",
+  "version": "1.8.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server/index.js",
+    "start": "node server/index.js",
+    "check": "node --check server/index.js && node --check public/app.js",
+    "setup": "node scripts/setup-env.js",
+    "test": "node scripts/smoke-test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

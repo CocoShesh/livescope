@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08070c">
+<meta name="description" content="LiveScope — watch multiple LIVE streams and chats in one room.">
+<title>LiveScope — Watch Multiple LIVE Streams</title>
+<link rel="icon" type="image/png" href="/assets/livescope-logo.png">
+<link rel="stylesheet" href="/home.css">
+</head>
+<body>
+<header class="home-nav">
+  <a class="home-brand" href="/" aria-label="LiveScope home"><img src="/assets/livescope-logo.png" alt="LiveScope"></a>
+  <nav class="home-nav-links" aria-label="Primary">
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <a class="nav-monitor" href="/monitor">Open App <span>→</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">MULTI-LIVE VIEWING</div>
+      <h1>Watch multiple <span>LIVE</span> streams.</h1>
+      <p class="hero-sub">One screen. More perspectives. Build a monitoring room, follow chats, and keep your favorite LIVE feeds together.</p>
+      <div class="hero-actions">
+        <a class="cta" href="/monitor">Get Started <span>→</span></a>
+        <a class="secondary" href="#features">See Features</a>
+      </div>
+      <div class="hero-trust">
+        <span>▦ 2×2 / 3×3 / 4×4</span><span>●</span><span>💬 All Chat</span><span>●</span><span>↗ Shareable Rooms</span>
+      </div>
+      <form id="quickForm" class="quick-add" novalidate>
+        <div class="quick-label">Jump straight to a creator</div>
+        <div class="quick-form"><input id="quickInput" autocomplete="off" placeholder="@username or LIVE URL" aria-label="Creator username or LIVE URL"><button type="submit" aria-label="Open monitor">→</button></div>
+      </form>
+    </div>
+    <div class="hero-visual" aria-label="LiveScope preview">
+      <div class="visual-window">
+        <div class="visual-top"><div class="visual-brand"><img src="/assets/livescope-logo.png" alt="LiveScope"></div><span class="visual-chip">4 streams</span><span class="visual-chip live">● LIVE</span></div>
+        <div class="preview-body">
+          <div class="mini-grid">
+            <div class="mini-tile"><div class="mini-screen portrait"><span>LIVE</span></div><span class="mini-name">@creator_one</span></div>
+            <div class="mini-tile"><div class="mini-screen"><span>LIVE</span></div><span class="mini-name">@creator_two</span></div>
+            <div class="mini-tile"><div class="mini-screen"><span>LIVE</span></div><span class="mini-name">@creator_three</span></div>
+            <div class="mini-tile"><div class="mini-screen portrait"><span>LIVE</span></div><span class="mini-name">@creator_four</span></div>
+          </div>
+          <aside class="preview-chat"><div class="preview-chat-head">ALL CHAT <span>All streams ▾</span></div><div class="preview-msg"><i></i><div><b>@creator_one</b><p>hello 👋</p></div></div><div class="preview-msg"><i></i><div><b>@creator_two</b><p>😂😂</p></div></div><div class="preview-msg"><i></i><div><b>@creator_four</b><p>nice setup</p></div></div><div class="preview-input">Search chat…</div></aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="feature-section">
+    <div class="section-heading"><div class="eyebrow">BUILT FOR MONITORING</div><h2>Everything you need in one room.</h2><p>Designed as a multi-stream control surface instead of another feed.</p></div>
+    <div class="feature-grid">
+      <article class="feature-card"><div class="feature-icon">▦</div><h3>Multi-Stream</h3><p>Keep 2×2, 3×3, or 4×4 LIVE layouts visible at once.</p></article>
+      <article class="feature-card"><div class="feature-icon">◉</div><h3>All Chat</h3><p>Combine chat from active streams with per-stream color and filters.</p></article>
+      <article class="feature-card"><div class="feature-icon">↗</div><h3>Shareable Rooms</h3><p>Save a setup and share a room link without rebuilding the grid.</p></article>
+      <article class="feature-card"><div class="feature-icon">◌</div><h3>Auto Reconnect</h3><p>Reconnect one monitor without reloading the whole room.</p></article>
+      <article class="feature-card"><div class="feature-icon">▣</div><h3>Portrait Friendly</h3><p>Fit vertical LIVE video cleanly with Full or Crop viewing modes.</p></article>
+      <article class="feature-card"><div class="feature-icon">◐</div><h3>Focus Audio</h3><p>Keep every feed visible while listening to one stream at a time.</p></article>
+    </div>
+  </section>
+
+  <section id="how" class="steps-section">
+    <div class="section-heading compact"><div class="eyebrow">HOW IT WORKS</div><h2>From creator to monitoring room in seconds.</h2></div>
+    <div class="steps">
+      <div class="step"><span>01</span><h3>Add a LIVE</h3><p>Enter a creator username or LIVE URL.</p></div>
+      <div class="step"><span>02</span><h3>Build your grid</h3><p>Add more creators and choose the layout that fits your screen.</p></div>
+      <div class="step"><span>03</span><h3>Monitor</h3><p>Use chat, audio focus, fullscreen, reconnect, and room sharing.</p></div>
+    </div>
+  </section>
+
+  <section class="final-cta"><div><div class="eyebrow">READY WHEN YOU ARE</div><h2>Open a LiveScope room.</h2><p>No account is required for the basic local room experience.</p></div><a class="cta" href="/monitor">Open LiveScope <span>→</span></a></section>
+</main>
+
+<footer class="home-footer"><div class="footer-brand"><img src="/assets/livescope-logo.png" alt="LiveScope"></div><div>Independent multi-LIVE viewer. Not affiliated with TikTok.</div><div><a href="/monitor">Open App</a> · <a href="#features">Features</a></div></footer>
+<script>
+const form=document.getElementById('quickForm');
+form.addEventListener('submit',e=>{e.preventDefault();const value=document.getElementById('quickInput').value.trim();const url=new URL('/monitor',location.origin);if(value)url.searchParams.set('add',value);location.assign(url)});
+</script>
+</body></html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08070c">
+<title>LiveScope — Multi-LIVE Monitor</title>
+<link rel="icon" type="image/png" href="/assets/livescope-logo.png">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-wrap">
+    <a href="/" class="brand-logo" aria-label="LiveScope home"><img src="/assets/livescope-logo.png" alt="LiveScope"></a>
+    <div class="subbrand">MULTI-LIVE MONITOR</div>
+  </div>
+  <div class="toolbar">
+    <span id="liveCount" class="live-count"><i></i> 0 LIVE</span>
+    <a class="toolbar-btn home-link" href="/">Home</a>
+    <button id="exitRoomBtn" class="toolbar-btn exit-room">Exit Room</button>
+    <button id="chatToggle" class="toolbar-btn">All Chat</button>
+    <button id="saveBtn" class="toolbar-btn">Save</button>
+    <button id="shareBtn" class="toolbar-btn">Share</button>
+    <button id="addBtn" class="primary">＋ Add LIVE</button>
+  </div>
+</header>
+<main class="app-shell">
+  <section class="workspace">
+    <section class="layoutbar">
+      <div class="eyebrow">MONITORING GRID</div>
+      <div class="layout-tools">
+        <div class="layouts" aria-label="Grid layout"><button data-layout="2">2×2</button><button data-layout="3">3×3</button><button data-layout="4">4×4</button></div>
+        <button id="refreshBtn" class="toolbar-btn">Refresh</button>
+        <button id="fitBtn" class="toolbar-btn active">Fit: Full</button>
+        <button id="loadBtn" class="toolbar-btn">Layouts</button>
+      </div>
+    </section>
+    <section id="grid" class="grid grid-2" aria-live="polite"></section>
+  </section>
+  <aside id="chatPanel" class="chat-panel">
+    <div class="chat-head"><div><div class="chat-title">ALL CHAT</div><div id="chatStatus" class="chat-status">Connecting…</div></div><button id="chatClose" class="icon-btn" title="Close chat">×</button></div>
+    <div class="chat-source-picker" id="chatSourcePicker">
+      <button id="chatSourceTrigger" class="source-trigger" type="button" aria-haspopup="listbox" aria-expanded="false"><span id="chatSourceLabel">All streams</span><span class="source-chevron">▾</span></button>
+      <div id="chatSources" class="source-menu" role="listbox" aria-multiselectable="true" hidden></div>
+    </div>
+    <div class="chat-controls"><input id="chatSearch" placeholder="Search chat…" aria-label="Search chat"><select id="chatType" aria-label="Chat event type"><option value="chat" selected>Chat</option><option value="all">All</option><option value="gift">Gifts</option><option value="join">Joins</option><option value="like">Likes</option><option value="social">Social</option><option value="system">System</option></select></div>
+    <div class="chat-toolbar"><button id="chatPause" class="toolbar-btn">Pause</button><button id="chatClear" class="toolbar-btn">Clear</button><button id="chatAuto" class="toolbar-btn active">Auto-scroll</button></div>
+    <div id="chatFeed" class="chat-feed"></div>
+  </aside>
+</main>
+
+<dialog id="addDialog"><form id="addForm" method="dialog"><div class="dialog-title">Add LIVE</div><div class="dialog-sub">Enter a creator username or LIVE URL.</div><input id="usernameInput" placeholder="@username or LIVE URL" autocomplete="off"><div id="dialogError" class="error" hidden></div><div class="dialog-actions"><button value="cancel" class="ghost">Cancel</button><button class="primary">Add monitor</button></div></form></dialog>
+<dialog id="layoutsDialog"><form method="dialog"><div class="dialog-title">Saved Layouts</div><div class="dialog-sub">Save and restore monitor arrangements on this device.</div><div id="savedList" class="saved-list"></div><div class="dialog-actions"><button value="close" class="ghost">Close</button></div></form></dialog>
+<dialog id="nameDialog"><form id="nameForm" method="dialog"><div class="dialog-title">Save Layout</div><div class="dialog-sub">Give this monitoring setup a name.</div><input id="layoutNameInput" placeholder="e.g. Night Watch" autocomplete="off"><div id="nameError" class="error" hidden></div><div class="dialog-actions"><button value="cancel" class="ghost">Cancel</button><button class="primary">Save layout</button></div></form></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<template id="tileTemplate"><article class="tile" draggable="true"><div class="tile-head"><div class="who"><span class="dot"></span><strong class="name">@username</strong><span class="status-text">READY</span></div><div class="tile-actions"><button class="icon-btn focus-btn" title="Focus audio">🔊</button><button class="icon-btn fullscreen-btn" title="Fullscreen">⛶</button><button class="remove-btn" title="Remove monitor">×</button></div></div><div class="screen"><video class="video" playsinline muted></video><div class="placeholder" data-state="connecting"><div class="tt-beat" aria-hidden="true"><span class="tt-shadow red">♪</span><span class="tt-shadow cyan">♪</span><span class="tt-core">♪</span></div><div class="big">CONNECTING TO STREAM...</div><div class="sub">Checking LIVE playback</div><button class="center-retry" type="button" title="Refresh this LIVE" aria-label="Refresh this LIVE"><span>↻</span></button></div><div class="drag-hint">Drag to reorder</div></div><div class="tile-foot"><span class="viewer-text">0 viewers</span><span class="stream-meta">Auto reconnect + chat</span></div></article></template>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.2/dist/hls.min.js"></script><script src="/app.js"></script>
+</body></html>
